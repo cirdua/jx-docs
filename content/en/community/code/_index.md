@@ -157,7 +157,7 @@ git clone git@github.com:<YOUR_USERNAME>/jx.git
 cd jx
 ```
 
-Add the conventional upstream `git` remote in order to fetch changes from jx's main master
+Add the conventional upstream `git` remote in order to fetch changes from jx's main
 branch and to create pull requests:
 
 ```sh
@@ -197,8 +197,8 @@ First, ensure that your local repository is up-to-date with the latest version o
 
 ```sh
 git fetch upstream
-git checkout master
-git merge upstream/master
+git checkout main
+git merge upstream/main
 ```
 
 Now you can create a new branch for your change:
@@ -298,14 +298,14 @@ In case you already pushed your work to your fork, you need to make a force push
 git push --force
 ```
 
-Last step, to ensure that your change would not conflict with other changes done in parallel by other contributors, you need to rebase your work on the latest changes done on jx master branch. Simply:
+Last step, to ensure that your change would not conflict with other changes done in parallel by other contributors, you need to rebase your work on the latest changes done on jx main branch. Simply:
 
 ```sh
-git checkout master #Move to local master branch
-git fetch upstream #Retrieve change from jx master bracnch
-git merge upstream/master #Merge the change into your local master
+git checkout main #Move to local main branch
+git fetch upstream #Retrieve change from jx main bracnch
+git merge upstream/main #Merge the change into your local main
 git checkout <BRANCH-NAME> #Move back to your local branch where you did your development
-git rebase master
+git rebase main
 ```
 
 Handle any conflicts and make sure your code builds and all tests pass. Then force push your branch to your remote.
@@ -414,7 +414,7 @@ Here is an example of the release type that will be done based on a commit messa
 
 ### Open a pull request
 
-We made a lot of progress. Good work. In this step we finally open a pull request to submit our additions. Open the [Jenkins X master repository](https://github.com/jenkins-x/jx/) on GitHub in your browser.
+We made a lot of progress. Good work. In this step we finally open a pull request to submit our additions. Open the [Jenkins X main repository](https://github.com/jenkins-x/jx/) on GitHub in your browser.
 
 You should find a green button labeled with "New pull request". But GitHub is clever and probably suggests you a pull request like in the beige box below:
 
@@ -445,9 +445,9 @@ Now your pull request is submitted, you need to get it merged. If you aren't a r
 
 If the tests pass you need to get a `/lgtm` from one of the reviewers (listed in the `OWNERS` file in the repository). You need a new LGTM every time you push changes. Once the tests pass and you have a LGTM for the latest changeset, your PR will be automatically merged.
 
-Jenkins X (well, Tide, a component of Jenkins X) won't merge your changes until it has the tests passing against the *current* `HEAD` of `master` - but don't worry, whilst the tests *continue* to pass it will automatically merge your changeset into master and rerun the tests. As you can imagine, this can take a little while (a few hours) if the merge queue is long. Tide will also automatically attempt to batch up passing changes, but if the batch fails, it will resort to merging the changesets one by one.
+Jenkins X (well, Tide, a component of Jenkins X) won't merge your changes until it has the tests passing against the *current* `HEAD` of `main` - but don't worry, whilst the tests *continue* to pass it will automatically merge your changeset into main and rerun the tests. As you can imagine, this can take a little while (a few hours) if the merge queue is long. Tide will also automatically attempt to batch up passing changes, but if the batch fails, it will resort to merging the changesets one by one.
 
-If the retest against `HEAD` of `master` fail, then it will notify you on the pull request and you'll need to make some changes (and potentially get a new LGTM).
+If the retest against `HEAD` of `main` fail, then it will notify you on the pull request and you'll need to make some changes (and potentially get a new LGTM).
 
 ## Testing
 
